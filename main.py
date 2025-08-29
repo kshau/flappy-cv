@@ -1,11 +1,19 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 from ultralytics import YOLO
 import cv2
+import os
+
 from game import run_game
+
+FPS = int(os.environ["FPS"])
+OPENCV_VIDEO_CAPTURE_SRC = int(os.environ["OPENCV_VIDEO_CAPTURE_SRC"])
 
 model = YOLO("yolo11n-pose.pt")
 
-cap = cv2.VideoCapture(0)
-cap.set(cv2.CAP_PROP_FPS, 30)
+cap = cv2.VideoCapture(OPENCV_VIDEO_CAPTURE_SRC)
+cap.set(cv2.CAP_PROP_FPS, FPS)
 
 running = True
 

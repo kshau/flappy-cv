@@ -3,10 +3,12 @@ pygame.init()
 
 import math
 import random
+import os
 
 SCREEN_WIDTH = 500
 SCREEN_HEIGHT = 500
-FPS = 30
+
+FPS = int(os.environ["FPS"])
 
 class Ground:
     def __init__(self, x):
