@@ -12,7 +12,7 @@ OPENCV_VIDEO_CAPTURE_SRC = int(os.environ["OPENCV_VIDEO_CAPTURE_SRC"])
 
 model = YOLO("yolo11n-pose.pt")
 
-cap = cv2.VideoCapture(OPENCV_VIDEO_CAPTURE_SRC)
+cap = cv2.VideoCapture(OPENCV_VIDEO_CAPTURE_SRC, cv2.CAP_AVFOUNDATION)
 cap.set(cv2.CAP_PROP_FPS, FPS)
 
 running = True

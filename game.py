@@ -11,6 +11,10 @@ SCREEN_HEIGHT = 500
 PIPE_GAP_X = 220
 PIPE_GAP_Y = 230
 
+PIPE_SPEED = 7
+
+CONTROLLER_SENSITIVITY = 0.9
+
 FPS = int(os.environ["FPS"])
 
 class Ground:
@@ -118,7 +122,7 @@ def handle_pipes(bird_rect):
 
         if game_state == "playing":
 
-            pipe.x -= 5
+            pipe.x -= PIPE_SPEED
 
             top_pipe_rect = pygame.Rect(pipe.x, pipe.y - 50, pipe_img_width, pipe_img_height)
             bottom_pipe_rect = pygame.Rect(pipe.x, PIPE_GAP_Y + pipe.y + 200, pipe_img_width, pipe_img_height)
@@ -174,8 +178,8 @@ def run_game(delta_left_eye_y):
 
         bird_yv += delta_left_eye_y
 
-    bird_yv *= 0.75
-    bird_y += bird_yv
+    bird_yv *= 0.72
+    bird_y += bird_yv * CONTROLLER_SENSITIVITY
 
     if game_state == "playing" and (bird_y + bird_img_height > ground_y):
         bird_y = ground_y - bird_img_height
